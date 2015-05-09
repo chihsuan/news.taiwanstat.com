@@ -40,8 +40,8 @@ router.get('/', function(req, res) {
 	});
 	feedparser.on('end', function() {
 		res.render('president', {
-			title: '總統府新聞稿',
-			description: '總統府新聞稿即時新聞 - 用數據看台灣',
+			title: '台灣政府整合新聞',
+			description: '台灣政府整合新聞 - 用數據看台灣',
 			news: news
 		});
 
