@@ -1,0 +1,33 @@
+extends layout
+
+block content
+
+  h2 
+    | #{title} - 司法院 
+  h4
+    （資料來源：
+    a(href="http://jirs.judicial.gov.tw")
+      | 司法院
+    | ）
+
+  div.container-button
+    .ui.basic.buttons
+      a(href='/j/news')
+        .ui.button 
+          | 司改訊息
+      a(href='/j/press')
+        .ui.button
+          | 新聞稿
+
+  each card in news
+    a(href= "#{card['link']}", target="_blank")
+      .news-block
+        .ui.card
+          .content
+            .header #{card['title']}
+            .meta #{prettyDate(card['pubDate'])}
+            .description
+              | #{card['title']}
+          .extra.content
+            = title
+

@@ -1,0 +1,50 @@
+extends layout
+
+block content
+
+  h2 
+    | #{title} - 立法院 
+  h4
+    （資料來源：
+    a(href="http://www.ly.gov.tw/")
+      | 台灣立法院
+    | ）
+
+  h3 院內資訊：
+
+  div.container-button
+    .ui.basic.buttons
+      a(href='/ly/main')
+        .ui.button 
+          | 立法院新聞訊息
+      a(href='/ly/meet')
+        .ui.button
+          | 立法院會議預報
+      a(href='/ly/memoir')
+        .ui.button
+          | 立法院會議紀要
+      a(href='/ly/ly-news')
+        .ui.button
+          | 立法院委員最新消息
+
+  h3 立法委員：
+  div.container-button
+    .ui.basic.buttons
+      a(href='/ly/achrives')
+        .ui.button 
+          | 立委政績
+      a(href='/ly/press')
+        .ui.button
+          | 新聞稿
+
+  each card in news
+    a(href= "#{card['link']}", target="_blank")
+      .news-block
+        .ui.card
+          .content
+            .header #{card['title']}
+            .meta #{prettyDate(card['pubDate'])}
+            .description
+              !{card['description']}
+          .extra.content
+            = title

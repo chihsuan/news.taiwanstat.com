@@ -1,0 +1,53 @@
+extends layout
+
+block content
+
+  h2 
+    | #{title} - 行政院 
+  h4
+    |（資料來源：
+    a(href="http://www.ey.gov.tw/")
+      | 台灣行政院
+    | ） 
+
+  div.container-button
+    .ui.basic.buttons
+      a(href='/ey/main')
+        .ui.button 
+          | 行政院重大政策
+      a(href='/ey/news')
+        .ui.button
+          | 行政院即時新聞
+      a(href='/ey/ey-news')
+        .ui.button
+          | 行政院本院新聞
+      a(href='/ey/units')
+        .ui.button
+          | 行政院部會新聞
+      a(href='/ey/lead')
+        .ui.button
+          | 行政院院長行程
+      a(href='/ey/deal')
+        .ui.button
+          | 行政院院會決議
+      a(href='/ey/customer')
+        .ui.button
+          | 行政院消保/新聞稿
+      a(href='/ey/customer-alert')
+        .ui.button
+          | 行政院消保/消費資(警)訊
+
+
+
+  each card in news
+    a(href= "#{card['link']}", target="_blank")
+      .news-block
+        .ui.card
+          .content
+            .header #{card['rss:title']['#']}
+            .meta #{prettyDate(card['pubDate'])}
+            .description
+              !{card['rss:description']['#']}
+          .extra.content
+            = title
+

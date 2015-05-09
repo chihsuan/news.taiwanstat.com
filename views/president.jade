@@ -1,0 +1,39 @@
+extends layout
+
+block content
+
+  h2 
+    | #{title} - 總統府 
+  h4
+    （資料來源：
+    a(href="http://www.president.gov.tw/")
+      | 台灣總統府
+    | ） 
+
+  div.container-button
+    .ui.basic.buttons
+      a(href='/president/press')
+        .ui.button 
+          | 總統府新聞稿
+      a(href='/president/announce')
+        .ui.button
+          | 總統府公報
+      a(href='/president/spot')
+        .ui.button
+          | 總統府全民焦點
+      a(href='/president/paper')
+        .ui.button
+          | 總統府手稿
+
+  each card in news
+    a(href= "http://www.president.gov.tw#{card['link']}", target="_blank")
+      .news-block
+        .ui.card
+          .content
+            .header #{card['rss:title']['#']}
+            .meta #{prettyDate(card['date'])}
+            .description
+              !{card['rss:description']['#']}
+          .extra.content
+            = title
+
